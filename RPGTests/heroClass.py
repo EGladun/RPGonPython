@@ -1,4 +1,5 @@
 import random as r
+from math import *
 
 class Hero:
     """Class for creating of heroes"""
@@ -12,6 +13,7 @@ class Hero:
         self.agility = r.randrange(1,8,1)
         self.intellect = r.randrange(1,8,1)
         self.luck = r.randrange(1,10,1)
+        self.weaponDamage = 0
 
         if self.race == "Orc":
             self.strength += 2
@@ -60,4 +62,10 @@ class Hero:
         print("Agility: ", self.agility)
         print("Intellect: ", self.intellect)
         print("Luck: ", self.luck)
+        pass
+    
+    
+    def punch(self):
+        combatDamage = ceil(self.strength/2 + self.weaponDamage)
+        print("Ваш удар наносит ", combatDamage, " урона")
         pass
