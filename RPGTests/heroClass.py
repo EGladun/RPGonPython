@@ -96,6 +96,15 @@ class Hero:
         print("Hello, my name is ", self.name)
         pass
 
+    def statsUp(self, stat):
+        self.strength += stat
+        self.endurance += stat
+        self.agility += stat
+        self.intellect += stat
+        self.luck += stat
+        print("Все статы увеличены на ", stat)
+        pass
+
     def lvlup(self):
         self.exp = 0
         self.lvl += 1
@@ -104,6 +113,7 @@ class Hero:
         self.bonusMP += self.bonusMP
         self.maxHealthPoints = self.endurance * 10 + self.bonusHP
         self.maxManaPoints = self.intellect * 10 + self.bonusMP
+        self.statsUp(1)
         print("Уровень игрока ", self.name, " повышается...")
         print("теперь ваш уровень равен ", self.lvl)
         print("Вы получаете 3 очка характеристик, теперь у вас ", self.statpoint, " нераспределенных очков характеристик")
