@@ -13,12 +13,19 @@ class Hero:
         self.agility = r.randrange(1,8,1)
         self.intellect = r.randrange(1,8,1)
         self.luck = r.randrange(1,10,1)
+        self.karma = 0
         self.weaponDamage = 0
+        self.lvl = 1
+        self.statpoint = 3
+        self.exp = 0
+        self.bonusHP = 10
+        self.bonusMP = 0
 
         if self.race == "Orc":
             self.strength += 2
             self.agility += 1
             self.intellect -= 3
+            self.bonusHP = 20
             if self.intellect <= 0:
                 self.intellect = 1
                 pass
@@ -27,6 +34,7 @@ class Hero:
             self.agility += 2
             self.intellect += 1
             self.strength -= 3
+            self.bonusMP = 5
             if self.strength <= 0:
                 self.strength = 1
                 pass
@@ -36,6 +44,7 @@ class Hero:
             self.intellect += 2
             self.strength += 1
             self.agility -= 3
+            self.bonusMP = 10
             if self.agility <= 0:
                 self.agility = 1
                 pass
@@ -44,14 +53,15 @@ class Hero:
             self.luck += 2
             self.agility += 1
             self.endurance -= 1
+            self.bonusHP = 15
             pass
 
         if self.endurance <= 2:
             self.endurance = 3
             pass
 
-        self.maxHealthPoints = self.endurance * 10
-        self.maxManaPoints = self.intellect * 10
+        self.maxHealthPoints = self.endurance * 10 + self.bonusHP
+        self.maxManaPoints = self.intellect * 10 + self.bonusMP
         
         print("Welcome to Underworld, ", race, ", ", name)
         print("Your stats is:")
@@ -62,10 +72,40 @@ class Hero:
         print("Agility: ", self.agility)
         print("Intellect: ", self.intellect)
         print("Luck: ", self.luck)
+        print("You have ", self.statpoint, " wild statpoints")
         pass
     
-    
+    def checkStats(self):
+        print("Your stats is:")
+        print("Max HP: ", self.maxHealthPoints)
+        print("Max MP: ", self.maxManaPoints)
+        print("Strength: ", self.strength)
+        print("Endurance: ", self.endurance)
+        print("Agility: ", self.agility)
+        print("Intellect: ", self.intellect)
+        print("Luck: ", self.luck)
+        print("You have ", self.statpoint, " wild statpoints")
+        pass
+
     def punch(self):
         combatDamage = ceil(self.strength/2 + self.weaponDamage)
         print("Ваш удар наносит ", combatDamage, " урона")
+        pass
+
+    def greeting(self):
+        print("Hello, my name is ", self.name)
+        pass
+
+    def lvlup(self):
+        self.exp = 0
+        self.lvl += 1
+        self.statpoint += 3
+        self.bonusHP += self.bonusHP
+        self.bonusMP += self.bonusMP
+        self.maxHealthPoints = self.endurance * 10 + self.bonusHP
+        self.maxManaPoints = self.intellect * 10 + self.bonusMP
+        print("Уровень игрока ", self.name, " повышается...")
+        print("теперь ваш уровень равен ", self.lvl)
+        print("Вы получаете 3 очка характеристик, теперь у вас ", self.statpoint, " нераспределенных очков характеристик")
+        self.checkStats()
         pass
