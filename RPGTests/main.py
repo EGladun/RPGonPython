@@ -35,3 +35,9 @@ def toJson():
 hero.lvlup()
 hero.lvlup()
 toJson()
+hero.agility = 200
+hero.punch()
+hero.punch()
+hero.punch()
+hero.punch()
+hero.punch()

@@ -14,12 +14,14 @@ class Hero:
         self.intellect = r.randrange(1,8,1)
         self.luck = r.randrange(1,10,1)
         self.karma = 0
-        self.weaponDamage = 0
+        self.weaponDamage = r.randrange(4,8,1)
+        self.critChance = ceil(self.agility*0.1)
         self.lvl = 1
         self.statpoint = 3
         self.exp = 0
         self.bonusHP = 10
         self.bonusMP = 0
+        self.combatDamage = 0
 
         if self.race == "Orc":
             self.strength += 2
@@ -87,10 +89,26 @@ class Hero:
         print("You have ", self.statpoint, " wild statpoints")
         pass
 
+    def crit(self):
+            if ((r.randrange(0,100,1)) <= self.critChance):
+                return True
+                pass
+            else:
+                return False
+                pass
+    pass
+
     def punch(self):
-        combatDamage = ceil(self.strength/2 + self.weaponDamage)
-        print("Ваш удар наносит ", combatDamage, " урона")
-        pass
+        self.critChance = ceil(self.agility*0.1)
+        self.combatDamage = ceil(self.strength/2 + self.weaponDamage)
+        self.crit()
+        if self.crit() == True:
+            print("Критический урон!!! Вы наносите ", self.combatDamage*2, " урона!")
+            pass
+        else:
+            print("Ваш удар наносит ", self.combatDamage, " урона")
+            pass
+    pass
 
     def greeting(self):
         print("Hello, my name is ", self.name)
