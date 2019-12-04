@@ -24,6 +24,7 @@ def toJson():
     "luck":hero.luck
     }
 
+    
     file = "heroes/" + str(hero.name) + "-file.json"
     with open(file, "w") as write_file:
         json.dump(mainHero, write_file, indent=4)
