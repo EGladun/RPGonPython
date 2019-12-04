@@ -131,8 +131,8 @@ class Hero:
         self.bonusMP += self.bonusMP
         self.maxHealthPoints = self.endurance * 10 + self.bonusHP
         self.maxManaPoints = self.intellect * 10 + self.bonusMP
-        self.statsUp(1)
         print("Уровень игрока ", self.name, " повышается...")
+        self.statsUp(1)
         print("теперь ваш уровень равен ", self.lvl)
         print("Вы получаете 3 очка характеристик, теперь у вас ", self.statpoint, " нераспределенных очков характеристик")
         self.checkStats()
