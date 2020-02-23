@@ -1,0 +1,9 @@
+{
+    "name": "Hitnik",
+    "race": "Human",
+    "statpoint": 9,
+    "brutality": 6,
+    "tactics": 7,
+    "survivability": 8,
+    "luck": 11
+}

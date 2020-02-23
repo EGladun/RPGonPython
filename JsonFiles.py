@@ -1,21 +1,15 @@
 import json
-from RPGTests.Hero import *
+from Hero import *
+
 
 def toJson(hero):
     main_hero = {
         "name": hero.name,
         "race": hero.race,
-        "exp": hero.exp,
-        "lvl": hero.lvl,
-        "maxHP": hero.maxHealthPoints,
-        "maxMP": hero.maxManaPoints,
-        "statpoints": hero.statpoint,
-        "bonusHP": hero.bonusHP,
-        "bonusMP": hero.bonusMP,
-        "strength": hero.strength,
-        "endurance": hero.endurance,
-        "agility": hero.agility,
-        "intellect": hero.intellect,
+        "statpoint": hero.statpoint,
+        "brutality": hero.brutality,
+        "tactics": hero.tactics,
+        "survivability": hero.survivability,
         "luck": hero.luck
     }
 
@@ -31,20 +25,13 @@ def outJson(name):
     if file:
         with open(file, "r") as read_file:
             data = json.load(read_file)
-            new_hero = Hero()
-            new_hero.name = data['name']
-            new_hero.race = data['race']
+            new_hero = Hero(data['name'], data['race'])
             new_hero.exp = data['exp']
             new_hero.lvl = data['lvl']
-            new_hero.maxHealthPoints = data['maxHP']
-            new_hero.maxManaPoints = data['maxMP']
-            new_hero.statpoint = data['statpoints']
-            new_hero.bonusHP = data['bonusHP']
-            new_hero.bonusMP = data['bonusMP']
-            new_hero.strength = data['strength']
-            new_hero.endurance = data['endurance']
-            new_hero.agility = data['agility']
-            new_hero.intellect = data['intellect']
+            new_hero.statpoint = data['statpoint']
+            new_hero.brutality = data['brutality']
+            new_hero.tactics = data['tactics']
+            new_hero.survivability = data['survivability']
             new_hero.luck = data['luck']
             return new_hero
     else:
