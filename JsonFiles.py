@@ -16,7 +16,7 @@ def toJson(hero):
     file = "heroes/" + str(hero.name) + "-file.json"
     with open(file, "w") as write_file:
         json.dump(main_hero, write_file, indent=4)
-    print("Json is created with name ", file)
+    print("Json is created with name", file)
     pass
 
 
